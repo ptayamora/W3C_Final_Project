@@ -8,10 +8,6 @@ body {
     background-color: white;
 }
 
-.main {
-  margin-top: 30px;
-}
-
 .topnav {
     overflow: hidden;
     position: fixed;
@@ -37,13 +33,14 @@ body {
     background-color: #EDEDED;
     color: black;
     border-radius: 50px;
+    transition: 0.4s;
 }
 
 .topnav .icon {
   display: none;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   .topnav a:not(:first-child) {display: none;}
   .topnav a.icon {
     float: right;
@@ -51,7 +48,7 @@ body {
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
@@ -79,6 +76,7 @@ body {
 .button:hover {
     background-color: #EDEDED;
     color: black;
+    transition: 0.4s;
 }
 
 .topnav-right{
@@ -90,39 +88,26 @@ img{
     float: left;
 }
 
-h1, h2{
+h1{
     text-align: center;
     font-weight: lighter;
     font-color: white;
+    font-size: 3vw;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+h2{
+    text-align: center;
+    font-weight: lighter;
+    font-color: white;
+    font-size: 2vw;
 }
 
 .announce{
     font-weight: bolder;
-}
-
-.regbutton {
-    border: 1px solid white;
-    background-color: #B01030;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 40px;
-    padding: 15px 32px;
-    width: 140px;
-}
-
-.regbutton:hover {
-    background-color: #DC143C;
-    color: white;
-}
-
-.center {
-    margin: 0;
     position: absolute;
-    top: 75%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
 }
+
+
+

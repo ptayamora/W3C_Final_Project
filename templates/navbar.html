@@ -1,0 +1,75 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+	<a href="/home" class="navbar-brand"><b>COVID-19 </b>Bakuna Tracker</a>
+
+	<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<!-- Collection of nav links, forms, and other content for toggling -->
+
+	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+		
+		<div class="navbar-nav ml-auto action-buttons">
+
+			<div class="nav-item dropdown">
+				<a href="/home" data-toggle="dropdown" class="nav-link dropdown-toggle mr-4">Login</a>
+				<div class="dropdown-menu action-form">
+
+					<form action="/login" target="_self" method="POST"  >
+						{% if error %}
+                              <p style="color:red">{{ error }}</p>
+						{% endif %}
+
+						<p class="hint-text">Sign in with your account</p>
+
+						<div class="form-group">
+							<input type="text" label="Username" class="form-control" placeholder="UserName" required="required" name="Username">
+						</div>
+
+						<div class="form-group">
+							<input class="form-control" placeholder="New Password" required="required" name="Password", type="Password">
+						</div>
+
+						<input type="submit" class="btn btn-primary btn-block" value="Login">
+
+						<div class="text-left mt-2">
+							<br><p class="hint-text">For administration, log in <a href="#">here</a></p>
+						</div>
+					</form>
+                </div>
+			</div>
+			<div class="nav-item dropdown">
+				<a href="/home" data-toggle="dropdown" class="btn btn-primary dropdown-toggle sign-up-btn">Sign up</a>
+                <div class="dropdown-menu action-form">
+					<form action="/register" target="_self" method="POST"  >
+						{% if error %}
+							<p style="color:red">{{ error }}</p>
+						{% endif %}
+
+						<p class="hint-text">Fill in this form to create your account!</p>
+
+						<div class="form-group">
+							<input class="form-control" placeholder="First Name" name="RFirstname">
+						</div>
+
+						<div class="form-group">
+							<input class="form-control" placeholder="Last Name" name="RLastname">
+						</div>
+
+						<div class="form-group">
+							<input class="form-control" placeholder="New Username" name="RUsername">
+						</div>
+
+						<div class="form-group">
+							<input class="form-control" placeholder="New Password" name="RPassword", type="Password">
+						</div>
+
+						<input type="submit" class="btn btn-primary btn-block" value="Sign up">
+					</form>
+				</div>
+			</div>
+        </div>
+	</div>
+</nav>

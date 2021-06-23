@@ -1,0 +1,19 @@
+.bg-nav{
+    background: #FF4E50;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FF4E50,#F9D423);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FF4E50,#F9D423); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.bg-nav2{
+    background: #3D7EAA;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #3D7EAA, #FFE47A);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #3D7EAA, #FFE47A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.mt-100{
+    margin-top:100px;
+}
+
+.mt-70{
+    margin-top:70px;
+}

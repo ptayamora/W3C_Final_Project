@@ -5,94 +5,67 @@
 {% block content %}
 <html>
 <head>
-    <style>
-        body {
-            background-image: url({{ url_for('static', filename='images/vaccinepic2.jpg') }});
-            background-color: #F5F5F5;
-            height: 300px;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            height: 100px;
-            width: 300px;
-            border: 2px solid black;
-            border-radius: 30px;
-        }
-
-        .container:hover{
-            border: 2px solid gray;
-        }
-
-        table {
-            border-spacing: 100;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="static/homestyle.css">
 </head>
-<body>
+<body style="background-image: url({{ url_for('static', filename='images/vaccinepic2.jpg') }});">
 
     <div class="main">
-        <br><br><br><br><br><br><br><br><br><br><br>
         <h1>Ikaw ba ay nakapagpa-rehistro na para sa iyong <b> bakuna kontra Covid-19?</b> </h1>
         <h2> Maaaring magsimula rito</h2>
-        <a class="regbutton center" href="#regform">Pindutin ito</a>
+        <div class="center">
+            <a class="regbutton" href="#">Pindutin ito</a>
+        </div>
     </div>
 
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <h1 class="announce">
-        Mga karagdagang impormasyon:
-    </h1>
-    <table>
-        <tr>
-            <td>
-                <div class="container">
-                    <img src="{{ url_for('static', filename='images/icons8-inspection-64.png') }}" style="padding-right:15px">
-                    <p></p>
-                    <p>MGA FAQ</p>
-                </div>
-            </td>
-            <td>
-                <div class="container">
-                    <img src="{{ url_for('static', filename='images/icons8-briefcase-64.png') }}" style="padding-right:15px">
-                    <p>MGA POLISIYA</p>
-                </div>
-            </td>
-             <td>
-                <div class="container">
-                    <img src="{{ url_for('static', filename='images/icons8-syringe-64.png') }}" style="padding-right:15px">
-                    <p>MGA BAKUNA</p>
-                </div>
-            </td>
-        </tr>
+    <div class="center2">
+        <h1 class="announce">
+            Mga karagdagang impormasyon:
+        </h1>
+    </div>
 
-        <tr>
-            <td>
-                <div class="container">
-                    <img src="{{ url_for('static', filename='images/icons8-ask-question-64.png') }}" style="padding-right:15px">
-                    <p>MGA KATANUNGAN</p>
-                </div>
-            </td>
-            <td>
-                <div class="container">
-                    <img src="{{ url_for('static', filename='images/icons8-target-64.png') }}" style="padding-right:15px">
-                    <p>COVID TRACKER</p>
-                </div>
-            </td>
-             <td>
-                <div class="container">
-                    <img src="{{ url_for('static', filename='images/icons8-inspection-64.png') }}" style="padding-right:15px">
-                    <p>sample info</p>
-                </div>
-            </td>
-        </tr>
-    </table>
+    <div class="icons center">
+        <div class="container">
+            <img src="{{ url_for('static', filename='images/icons8-inspection-64.png') }}" style="padding-right:15px">
+            <a href="/faq">MGA FAQ</a>
+        </div>
+
+        <div class="container">
+            <img src="{{ url_for('static', filename='images/icons8-briefcase-64.png') }}" style="padding-right:15px">
+            <a href="https://drive.google.com/drive/folders/1OSEInMnGB5Fk9J1zpX35m8Nq2xZrX6vc" target="_blank">MGA POLISIYA</a>
+        </div>
+
+        <div class="container">
+            <img src="{{ url_for('static', filename='images/icons8-syringe-64.png') }}" style="padding-right:15px">
+            <a href="/vaccine">MGA BAKUNA</a>
+        </div>
+
+        <br><br>
+
+        <div class="container">
+            <img src="{{ url_for('static', filename='images/icons8-ask-question-64.png') }}" style="padding-right:15px">
+            <a href="https://doh.gov.ph/vaccines/tanong-ng-bayan" target="_blank">MGA KATANUNGAN</a>
+        </div>
+
+        <div class="container">
+            <img src="{{ url_for('static', filename='images/icons8-target-64.png') }}" style="padding-right:15px">
+            <a href="https://doh.gov.ph/covid19tracker" target="_blank">COVID TRACKER</a>
+        </div>
+
+        <div class="container">
+            <img src="{{ url_for('static', filename='images/icons8-inspection-64.png') }}" style="padding-right:15px">
+            <a href="#sample">sample info</a>
+        </div>
+    </div>
+
+    <div class="center3">
+        <a href="https://icons8.com/">
+            <p style="text-align: center">All icons from Icons8</p>
+        </a>;
+
+        <a href="https://media.npr.org/assets/img/2021/02/18/philippines-vaccine-03_custom-bd2586ffc5a65a853c1f402300e0cec68b94da99-s800-c85.webp">
+            <p style="text-align: center">Image by Ezra Acayan</p>
+        </a>
+    </div>
 
 </body>
 </html>
