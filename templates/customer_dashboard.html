@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>COVID-19 Vaccine Registration Form</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+      <link href="static/form.css" rel="stylesheet">
+   </head>
+<body>
+    <nav class="navbar" style="margin-bottom:200%; margin-top:0%">
+        <a href="/home" class="navbar-brand text-light"> <b>COVID-19</b> Bakuna Tracker</a>
+    </nav>
+
+    <div class="container" style="margin-top: 3em; margin-bottom: 10em; margin-right:18em; position: relative;width:900px">
+      <header>Registration</header>
+
+      <div class="form-outer">
+        <form style="margin: auto;" method="GET">
+          <div class="page">
+
+            <div class="title">Category</div>
+            <div class="field">
+              <div class="label">Category</div>
+              <output type="text" name="VCategory" placeholder="Category">{{ data.category }}</output>
+            </div>
+
+            <div class="title">Personal Information:</div>
+
+            <div class="field">
+              <div class="label">Full Name</div>
+              <output type="text" name="VLastname" placeholder="Last Name">{{ data.last_name }}</output>
+              <output type="text" name="VFirstname" placeholder="First Name">{{ data.first_name }}</output>
+              <output type="text" name="VMiddlename" placeholder="Middle Name">{{ data.mid_name }}</output>
+            </div>
+
+            <div class="field">
+              <div class="label">Contact Details</div>
+              <output type="text" name="VContactnumber" placeholder="Contact Number" style="margin-right:0.5em;">{{ data.contact_num }}</output>
+              <output type="text" name="VEmail" placeholder="Email address">{{ data.email }}</output>
+            </div>
+
+            <div class="field">
+
+              <div class="label">Date of Birth</div>
+              <p>MONTH</p>
+              <output type="text" name="VBirthmonth" placeholder="Birth Month">{{ data.birthmonth }}</output>
+
+              <p>DATE</p>
+              <output type="text" name="VBirthdate" placeholder="Birth Date">{{ data.birthdate }}</output>
+
+              <p>YEAR</p>
+              <output type="text" name="VBirthyear" placeholder="Birth Year">{{ data.birthyear }}</output>
+            </div>
+
+            <div class="field">
+
+              <div class="label">Age</div>
+              <output type="text" name="VAge" placeholder="Age" style="margin-right:0.5em;">{{ data.age }}</output>
+
+              <div class="label" style="left: 35%;">Gender</div>
+              <output type="text" name="VGender" placeholder="Gender" style="margin-right:0.5em;">{{ data.gender }}</output>
+
+              <div class="label" style="left: 68%;">Civil Status</div>
+              <output type="text" name="VAge" placeholder="Civil Status" style="margin-right:0.5em;">{{ data.civil_status }}</output>
+            </div>
+
+            <div class="field">
+              <div class="label">Address</div>
+              <output type="text" name="VRegion" placeholder="Region" style="margin-right:0.5em;">{{ data.region }}</output>
+              <output type="text" name="VProvince" placeholder="Province" style="margin-right:0.5em;">{{ data.province }}</output>
+              <output type="text" name="VCity" placeholder="City/Municipality" style="margin-right:0.5em;">{{ data.city }}</output>
+              <output type="text" name="VBarangay" placeholder="Barangay">{{ data.barangay }}</output>
+            </div>
+
+            <div class="field" style="margin-top: -2.25em;">
+              <output type="text" name="VAddress" placeholder="Complete Address" style="width:100%">{{ data.address }}</output>
+            </div>
+
+            <div class="title">MEDICAL CONDITIONS:</div>
+
+            <div class="field2">
+
+              <div class="field1" style="width:35%">
+                <div class="label">Pregnancy Status</div>
+                <output type="text" name="VPregnanystatus" placeholder="Pregnancy Status" style="margin-right:0.5em;">{{ data.pregnancy_status }}</output>
+              </div>
+              <div style="width: 15%"></div>
+              <div class="field1" style="width:50%">
+                <div class="label">Direct Interaction with Covid Patient</div>
+                <output type="text" name="VCovidinteraction" placeholder="Covid Interaction" style="margin-right:0.5em;">{{ data.covid_interaction }}</output>
+              </div>
+
+            </div>
+
+            <div class="field1">
+              <div class="label">Allergies</div>
+              <output type="text" name="VAllergy" placeholder="Allergy" style="margin-right:0.5em;">{{ data.allergy }}</output>
+            </div>
+
+            <div class="field">
+              <div class="label" for="allergies">If YES, please specify (e.g. drug, latex, food, mold, pollen, insect, pet)</div>
+              <output type="text" name="VAllergies2" placeholder="Allergies" style="margin-right:0.5em;">{{ data.allergy_list }}</output>
+            </div>
+
+            <div class="field1">
+              <div class="label">Comorbidity</div>
+              <output type="text" name="VComorbidity" placeholder="Comorbidity" style="margin-right:0.5em;">{{ data.comorbidity }}</output>
+            </div>
+
+            <div class="field" style="width: 105%">
+              <div class="label" for="comorbidity">If YES, please specify (e.g. hypertension, diabetes, asthma, heart/kidney disease)</div>
+              <output type="text" name="VSelection" placeholder="Selection" style="margin-right:0.5em;">{{ data.selection }}</output>
+            </div>
+
+            <div class="field1">
+              <div class="label">Diagnose with COVID-19:</div>
+              <output type="text" name="VDiagnosis" placeholder="Diagnosis" style="margin-right:0.5em;">{{ data.diagnosis }}</output>
+            </div>
+
+            <div class="field">
+              <div class="label" for="diagnosis">If YES, please specify (e.g. asymptomatic, mild, moderate, severe, critical)</div>
+              <output id="diagnosis" type="text" name="VClassification">{{ data.classification }}</output>
+            </div>
+
+            <div class="field">
+              <div class="label" for="c_date">Date of First Positive Result/Specimen Collection (MM/DD/YY)</div>
+              <output id="c_date" type="text" name="VCoviddate">{{ data.covid_date }}</output>
+            </div>
+
+            <div class="field" style="width:50%">
+              <div class="label">Provided Electronic Informed Consent:</div>
+              <output type="text" name="VConsent" placeholder="Consent" style="margin-right:0.5em;">{{ data.consent }}</output>
+
+            </div>
+
+            <div class="field">
+              <div class="label" for="status">Vaccination Status</div>
+              <output id="status" type="text" name="VStatus">{{ data.status }}</output>
+            </div>
+
+            <div class="field btns">
+              <button>
+                <a href="#">Edit</a>
+              </button>
+
+            </div>
+
+          </div>
+        </form>
+      </div>
+
+    </div>
+</body>
+</html>

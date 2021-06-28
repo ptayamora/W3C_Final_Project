@@ -9,16 +9,17 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url("bg.png"), -webkit-linear-gradient(bottom, #0250c5, #d43f8d);
+  background: url("bg.png"), -webkit-linear-gradient(bottom, #dbd65c, #5614b0);
 }
 ::selection{
   color: #fff;
-  background: #d43f8d;
+  background: #5614b0;
 }
 
 .container{
   position: relative;
   max-width: 60%;
+  max-height: 60%;
   background: #fff;
   text-align: center;
   border-radius: 5px;
@@ -95,7 +96,7 @@ form .page .field1 .label{
   max-width: 90%;
 }
 
-form .page .field input{
+form .page .field input, output{
   height: 100%;
   width: 100%;
   border: 1px solid lightgrey;
@@ -104,7 +105,7 @@ form .page .field input{
   font-size: 18px;
 }
 
-form .page .field1 input{
+form .page .field1 input, output{
   height: 100%;
   width: 50%;
   border: 1px solid lightgrey;
@@ -141,7 +142,7 @@ form .page .field button{
   width: 100%;
   height: calc(100% + 5px);
   border: none;
-  background: #d33f8d;
+  background: #dbd65c;
   margin-top: -20px;
   border-radius: 5px;
   color: #fff;
@@ -157,7 +158,7 @@ form .page .field1 button{
   width: 100%;
   height: calc(100% + 5px);
   border: none;
-  background: #d33f8d;
+  background: #dbd65c;
   margin-top: -20px;
   border-radius: 5px;
   color: #fff;
@@ -176,7 +177,10 @@ form .page .field button:hover{
 form .page .field1 button:hover{
   background: #000;
 }
-
+form .page .btns a{
+  text-decoration: none;
+  color: white;
+}
 form .page .btns button{
   margin-top: -20px!important;
 }
@@ -216,8 +220,8 @@ form .page .btns button.next{
   line-height: 25px;
 }
 .progress-bar .step .bullet.active{
-  border-color: #d43f8d;
-  background: #d43f8d;
+  border-color: #dbd65c;
+  background: #dbd65c;
 }
 .progress-bar .step .bullet span{
   position: absolute;
@@ -238,7 +242,7 @@ form .page .btns button.next{
   background: #262626;
 }
 .progress-bar .step .bullet.active:after{
-  background: #d43f8d;
+  background: #dbd65c;
   transform: scaleX(0);
   transform-origin: left;
   animation: animate 0.3s linear forwards;
@@ -253,7 +257,7 @@ form .page .btns button.next{
   display: none;
 }
 .progress-bar .step p.active{
-  color: #d43f8d;
+  color: #dbd65c;
   transition: 0.2s linear;
 }
 .progress-bar .step .check{

@@ -16,11 +16,11 @@ def close_connect(exception):
 def home():
     return render_template('home.html')
 
-@app.route('/login', methods = ['GET'])
+@app.route('/admin_login', methods = ['GET'])
 def login1():
     return render_template('admin_login.html')
 
-@app.route('/login', methods=['POST'])
+@app.route('/admin_login', methods=['POST'])
 def login2():
     UN = request.form['Username']
     PW = request.form['Password']
@@ -35,15 +35,25 @@ def login2():
     error = None
 
     if len(rows) == 1:
-        return redirect('/dashboard')
+        return redirect('/admin_dashboard')
         #render will be changed dashboard still to be edited
     else:
         if check_login(request.form['Username'], request.form['Password']):
-            return redirect('/dashboard')
+            return redirect('/admin_dashboard')
         else:
             error = 'Username and password not recognized'
             time.sleep(1)
             return render_template('admin_login.html', error=error)
+
+@app.route('/admin_dashboard')
+def dashboard():
+    sqlconnection = sqlite3.connect(currentlocation + '\Form.db')
+    sqlconnection.row_factory = sqlite3.Row
+    cur = sqlconnection.cursor()
+    cur.execute("SELECT * FROM DATA")
+    rows = cur.fetchall()
+    return render_template('admin_dashboard.html', rows=rows)
+    #very bare no design yet
 
 @app.route('/admin_register', methods = ['GET', 'POST'])
 def admin_register():
@@ -72,16 +82,6 @@ def admin_register():
 
     return render_template('admin_register.html')
     #could not make function verifying if username is already taken
-
-@app.route('/dashboard')
-def dashboard():
-    sqlconnection = sqlite3.connect(currentlocation + '\Login.db')
-    sqlconnection.row_factory = sqlite3.Row
-    cur = sqlconnection.cursor()
-    cur.execute("SELECT * FROM Users")
-    rows = cur.fetchall()
-    return render_template('dashboard.html', rows=rows)
-    #very bare no design yet
 
 @app.route('/register', methods=['get','post'])
 def register():
@@ -119,39 +119,7 @@ def register():
         sqlconnection = sqlite3.Connection(currentlocation + '\Form.db')
         cursor = sqlconnection.cursor()
 
-        cursor.execute('''
-                    CREATE TABLE IF NOT EXISTS DATA(
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    category VARCHAR(20) NOT NULL,
-                    last_name VARCHAR(20) NOT NULL,
-                    first_name VARCHAR(20) NOT NULL,
-                    mid_name VARCHAR(20) NOT NULL,
-                    contact_num TEXT NOT NULL,
-                    email TEXT NOT NULL,
-                    birthmonth VARCHAR(20) NOT NULL,
-                    birthdate INTEGER NOT NULL,
-                    birthyear INTEGER NOT NULL,
-                    age INTEGER NOT NULL,
-                    gender VARCHAR(20) NOT NULL,
-                    civil_status VARCHAR(20) NOT NULL,
-                    region VARCHAR(20) NOT NULL,
-                    province VARCHAR(20) NOT NULL,
-                    city VARCHAR(20) NOT NULL,
-                    barangay TEXT NOT NULL,
-                    address TEXT NOT NULL,
-                    pregnancy_status TEXT NOT NULL,
-                    covid_interaction TEXT NOT NULL,
-                    allergy TEXT NOT NULL,
-                    allergy_list VARCHAR(100),
-                    comorbidity TEXT NOT NULL,
-                    selection VARCHAR(100),
-                    diagnosis TEXT NOT NULL,
-                    classification VARCHAR(100),
-                    covid_date TEXT NOT NULL,
-                    consent TEXT NOT NULL,
-                    username VARCHAR(20) NOT NULL,
-                    password VARCHAR(20) NOT NULL);
-                    ''')
+        create_table()
 
         query1 = "INSERT INTO DATA VALUES(null,'{ct}','{ln}','{fn}','{mn}','{cn}','{em}','{bm}','{bd}','{by}','{ag}','{gn}','{cs}','{rg}','{pr}','{cy}','{br}','{ad}','{ps}','{ci}','{al}','{al2}','{cm}','{sl}','{dg}','{cl}','{cd}','{co}','{un}','{pw}')".format(ct=vCT, ln=vLN, fn=vFN, mn=vMN, cn=vCN, em=vEM, bm=vBM, bd=vBD, by=vBY, ag=vAG, gn=vGN, cs=vCS, rg=vRG, pr=vPR, cy=vCY, br=vBR, ad=vAD, ps=vPS, ci=vCI, al=vAL, al2=vAL2, cm=vCM, sl=vSL, dg=vDG, cl=vCL, cd=vCD, co=vCO, un=vUN, pw=vPW)
         cursor.execute(query1)
@@ -160,6 +128,49 @@ def register():
         return redirect('/home')
 
     return render_template('register.html')
+
+@app.route('/customer', methods = ['GET'])
+def login3():
+    return render_template('customer_login.html')
+
+@app.route('/customer', methods=['POST'])
+def login4():
+    UN = request.form['Username']
+    PW = request.form['Password']
+
+    sqlconnection = sqlite3.Connection(currentlocation + '\Form.db')
+    cursor = sqlconnection.cursor()
+    query = "SELECT Username, Password FROM DATA WHERE username = '{un}' AND password = '{pw}'".format(un = UN, pw = PW)
+
+    rows = cursor.execute(query)
+    rows = rows.fetchall()
+
+    error = None
+
+    if len(rows) == 1:
+        DATA = read_data(UN)
+        return render_template('customer_dashboard.html', data=DATA)
+
+    else:
+        if check_login2(request.form['Username'], request.form['Password']):
+            return redirect('/customer_dashboard/<Username>')
+        else:
+            error = 'Username and password not recognized'
+            time.sleep(1)
+            return render_template('customer_login.html', error=error)
+
+@app.route('/customer_dashboard/<Username>')
+def dashboard1():
+    return render_template('customer_dashboard.html')
+
+@app.route('/edit_registration_form', methods='GET')
+def edit_registration_form1():
+    read_data()
+    return render_template()
+
+@app.route('/edit_registration_form', methods='POST')
+def edit_registration_form2():
+    update_record()
 
 @app.route('/about')
 def about():

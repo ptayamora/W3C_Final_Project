@@ -3,12 +3,12 @@
 <html lang="en" dir="ltr">
    <head>
       <meta charset="utf-8">
-      <title>Multi Step Form | CodingNepal</title>
+      <title>COVID-19 Vaccine Registration Form</title>
       <link href="static/form.css" rel="stylesheet">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
    </head>
 <body>
-    <div class="container" style="margin-top: 6em; position: relative;">
+    <div class="container" style="margin-top: 6em; margin-bottom: 10em; position: relative;">
       <header>Registration</header>
 
       <p style="margin-top: -25px; margin-bottom: 10px;">All information/data provided will be treated strictly confidential and for master listing/profiling for COVID-19 Vaccination Tracking System only.</p>
@@ -48,13 +48,13 @@
       </div>
 
       <div class="form-outer">
-        <form action="/register" method="post" style="margin: auto;">
+        <form action="/register" style="margin: auto;" method="POST">
 
           <div class="page slide-page">
 
             <div class="title">Category</div>
             <div class="field">
-              <select name="VCategory" id="category" required>
+              <select name="VCategory" id="category">
                 <option value="Health Care Worker">Health Care Worker</option>
                 <option value="Uninformed Personnel">Uninformed Personnel</option>
                 <option value="Senior Citizen">Senior Citizen</option>
@@ -76,15 +76,15 @@
 
             <div class="field">
               <div class="label">Full Name</div>
-              <input type="text" name="VLastname" placeholder="Last Name" required>
-              <input type="text" name="VFirstname" placeholder="First Name" required>
+              <input type="text" name="VLastname" placeholder="Last Name">
+              <input type="text" name="VFirstname" placeholder="First Name">
               <input type="text" name="VMiddlename" placeholder="Middle Name">
             </div>
 
             <div class="field">
               <div class="label">Contact Details</div>
               <input type="text" name="VContactnumber" placeholder="Contact Number" style="margin-right:0.5em;">
-              <input type="text" name="VEmail" placeholder="Email address" required>
+              <input type="text" name="VEmail" placeholder="Email address">
             </div>
 
             <div class="field">
@@ -92,18 +92,18 @@
               <div class="label">Date of Birth</div>
               <p>MONTH</p>
               <select name="VBirthmonth">
-                <option value="january">January</option>
-                <option value="february">February</option>
-                <option value="march">March</option>
-                <option value="april">April</option>
-                <option value="may">May</option>
-                <option value="may">June</option>
-                <option value="july">July</option>
-                <option value="august">August</option>
-                <option value="september">September</option>
-                <option value="october">October</option>
-                <option value="november">November</option>
-                <option value="december">December</option>
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="May">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
               </select>
 
               <p>DATE</p>
@@ -236,19 +236,19 @@
 
               <div class="field1">
                 <div class="label">Pregnancy Status</div>
-                <input type="radio" id="positive" name="VPregnancystatus" value="Not Pregnant" style="transform:scale(0.5)">
+                <input type="radio" id="positive" name="VPregnancystatus" value="Pregnant" style="transform:scale(0.5)">
                 <p for="positive">Pregnant</p>
 
-                <input type="radio" id="negative" name="VPregnancystatus" value="Pregnant" style="transform:scale(0.5)">
+                <input type="radio" id="negative" name="VPregnancystatus" value="Not Pregnant" style="transform:scale(0.5)">
                 <p for="negative">Not Pregnant</p><br>
               </div>
               <div style="width: 15%"></div>
               <div class="field1">
                 <div class="label">Direct Interaction with Covid Patient</div>
-                <input type="radio" id="yes_covid" name="VCovidinteraction" value="YES" style="transform:scale(0.5)">
+                <input type="radio" id="yes_covid" name="VCovidinteraction" value="Yes" style="transform:scale(0.5)">
                 <p for="yes_covid">YES</p>
 
-                <input type="radio" id="no_covid" name="VCovidinteraction" value="NO" style="transform:scale(0.5)">
+                <input type="radio" id="no_covid" name="VCovidinteraction" value="No" style="transform:scale(0.5)">
                 <p for="no_covid">NO</p><br>
               </div>
 
@@ -256,10 +256,10 @@
 
             <div class="field1">
               <div class="label">Allergies</div>
-              <input type="radio" id="yes_allergy" name="VAllergies" value="yes" style="transform:scale(0.5)">
+              <input type="radio" id="yes_allergy" name="VAllergies" value="Yes" style="transform:scale(0.5)">
               <p for="yes_comor">YES</p>
 
-              <input type="radio" id="no_allergy" name="VAllergies" value="no" style="transform:scale(0.5)">
+              <input type="radio" id="no_allergy" name="VAllergies" value="No" style="transform:scale(0.5)">
               <p for="no_comor">NO</p><br>
             </div>
 
@@ -270,10 +270,10 @@
 
             <div class="field1">
               <div class="label">Comorbidity</div>
-              <input type="radio" id="yes_comor" name="VComorbidity" value="yes" style="transform:scale(0.5)">
+              <input type="radio" id="yes_comor" name="VComorbidity" value="Yes" style="transform:scale(0.5)">
               <p for="yes_comor">YES</p>
 
-              <input type="radio" id="no_comor" name="VComorbidity" value="no" style="transform:scale(0.5)">
+              <input type="radio" id="no_comor" name="VComorbidity" value="No" style="transform:scale(0.5)">
               <p for="no_comor">NO</p><br>
             </div>
 
@@ -303,9 +303,9 @@
 
             <div class="field" style="width:50%">
               <div class="label">Provided Electronic Informed Consent:</div>
-              <input type="radio" id="yes_consent" name="VConsent" value="yes" style="transform:scale(0.5)">
+              <input type="radio" id="yes_consent" name="VConsent" value="Yes" style="transform:scale(0.5)">
               <p for="yes_consent">YES</p>
-              <input type="radio" id="no_consent" name="VConsent" value="no" style="transform:scale(0.5)">
+              <input type="radio" id="no_consent" name="VConsent" value="No" style="transform:scale(0.5)">
               <p for="no_consent">NO</p><br>
             </div>
 
@@ -321,12 +321,12 @@
 
             <div class="field">
               <div class="label">Username</div>
-              <input type="text" name="VUsername">
+              <input type="text" name="VUsername" required="required">
             </div>
 
             <div class="field">
               <div class="label">Password</div>
-              <input type="password" name="VPassword">
+              <input type="password" name="VPassword" required="required">
             </div>
 
             <div class="field btns">

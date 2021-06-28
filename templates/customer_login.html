@@ -8,7 +8,7 @@
 
 
 </head>
-<body class="bg-nav">
+<body class="bg-nav3">
     <nav class="navbar">
         <a href="/home" class="navbar-brand text-light"> <b>COVID-19</b> Bakuna Tracker</a>
     </nav>
@@ -24,7 +24,7 @@
             <div class="col-md-4">
                 <div class="card mt-100">
                     <div class="card-body">
-                        <form name="login-form"  action="/admin_login" onsubmit="return validateForm()" target="_self" method="POST">
+                        <form name="login-form"  action="/customer" onsubmit="return validateForm()" target="_self" method="POST">
                             {% if error %}
                               <p style="color:red">{{ error }}</p>
                             {% endif %}
