@@ -4,6 +4,7 @@ Covid-19 Vaccine Tracker
 update as of june 30, 2021:
 - working na lahat yay
 - log-in not really secure, session() not used
+- admin registration fixed
 
 update as of june 29, 2021:
 - customer dashboard view OK
