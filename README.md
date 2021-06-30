@@ -1,7 +1,7 @@
 # weblis161_proj
 Covid-19 Vaccine Tracker
 
-DOCUMENTATION:
+**DOCUMENTATION:**
 
 Website Description:
   - The COVID-19 Vaccine Tracker Website aims to aid in the vaccine registration of people. This website was created for a hospital or an organization that will handle the vaccination of people in their area. 
