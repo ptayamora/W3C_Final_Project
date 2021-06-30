@@ -16,33 +16,18 @@ def close_connect(exception):
 def home():
     return render_template('home.html')
 
-@app.route('/admin_login', methods = ['GET'])
 def login1():
-    return render_template('admin_login.html')
+    return redirect('/admin_dashboard')
 
-@app.route('/admin_login', methods=['POST'])
+@app.route('/admin_login', methods=['GET','POST'])
 def login2():
-    UN = request.form['Username']
-    PW = request.form['Password']
-
-    sqlconnection = sqlite3.Connection(currentlocation + '\Login.db')
-    cursor = sqlconnection.cursor()
-    query = "SELECT Username, Password FROM Users WHERE Username = '{un}' AND Password = '{pw}'".format(un = UN, pw = PW)
-
-    rows = cursor.execute(query)
-    rows = rows.fetchall()
-
     error = None
-
-    if len(rows) == 1:
-        return redirect('/admin_dashboard')
-    else:
+    if request.method == 'POST':
         if check_login(request.form['Username'], request.form['Password']):
-            return redirect('/admin_dashboard')
+            return login1()
         else:
             error = 'Username and password not recognized'
-            time.sleep(1)
-            return render_template('admin_login.html', error=error)
+    return render_template('admin_login.html', error=error)
 
 @app.route('/admin_dashboard')
 def dashboard():
@@ -149,35 +134,19 @@ def process():
         time.sleep(1)
         return redirect('/home')
 
-@app.route('/customer', methods = ['GET'])
-def login3():
-    return render_template('customer_login.html')
+def login3(Username):
+    DATA = read_data(Username)
+    return render_template('customer_view.html',data=DATA)
 
-@app.route('/customer', methods=['POST'])
+@app.route('/customer', methods=['GET','POST'])
 def login4():
-    UN = request.form['Username']
-    PW = request.form['Password']
-
-    sqlconnection = sqlite3.Connection(currentlocation + '\Form.db')
-    cursor = sqlconnection.cursor()
-    query = "SELECT Username, Password FROM DATA WHERE username = '{un}' AND password = '{pw}'".format(un = UN, pw = PW)
-
-    rows = cursor.execute(query)
-    rows = rows.fetchall()
-
     error = None
-
-    if len(rows) == 1:
-        DATA = read_data(UN)
-        return render_template('customer_view.html', data=DATA)
-    else:
+    if request.method == 'POST':
         if check_login2(request.form['Username'], request.form['Password']):
-            DATA = read_data(UN)
-            return render_template('customer_view.html', data=DATA)
+            return login3(request.form['Username'])
         else:
             error = 'Username and password not recognized'
-            time.sleep(1)
-            return render_template('customer_login.html', error=error)
+    return render_template('customer_login.html', error=error)
 
 @app.route('/customer', methods=['POST'])
 def customer_back():
