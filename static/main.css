@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
 
 * {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 body {
@@ -71,6 +72,7 @@ body {
     font-size: 16px;
     border-radius: 50px;
     width: 85px;
+    max-width: 100%;
 }
 
 .button:hover {

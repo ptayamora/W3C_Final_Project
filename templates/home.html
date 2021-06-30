@@ -7,10 +7,10 @@
 <head>
     <link rel="stylesheet" type="text/css" href="static/homestyle.css">
 </head>
-<body style="background-image: url({{ url_for('static', filename='images/vaccinepic2.jpg') }});">
+<body style="background-image: url({{ url_for('static', filename='images/vaccinepic2.jpg') }})">
 
     <div class="main">
-        <h1>Ikaw ba ay nakapagpa-rehistro na para sa iyong <b> bakuna kontra Covid-19?</b> </h1>
+        <h1>Ikaw ba ay nakapagpa-rehistro na para sa iyong <br><b> bakuna kontra Covid-19?</b> </h1>
         <h2> Maaaring magsimula rito</h2>
         <div class="center">
             <a class="regbutton" href="/register">Pindutin ito</a>
@@ -26,37 +26,43 @@
     </div>
 
     <div class="icons center">
+        <a href="/faq">
         <div class="container">
-            <img src="{{ url_for('static', filename='images/icons8-inspection-64.png') }}" style="padding-right:15px">
-            <a href="/faq">MGA FAQ</a>
+            <img src="{{ url_for('static', filename='images/icons8-inspection-64.png') }}" style="padding-right:15px">MGA FAQ
         </div>
+    </a>
 
+    <a href="https://drive.google.com/drive/folders/1OSEInMnGB5Fk9J1zpX35m8Nq2xZrX6vc" target="_blank">
         <div class="container">
-            <img src="{{ url_for('static', filename='images/icons8-briefcase-64.png') }}" style="padding-right:15px">
-            <a href="https://drive.google.com/drive/folders/1OSEInMnGB5Fk9J1zpX35m8Nq2xZrX6vc" target="_blank">MGA POLISIYA</a>
+            <img src="{{ url_for('static', filename='images/icons8-briefcase-64.png') }}" style="padding-right:15px">MGA POLISIYA
         </div>
+    </a>
 
+    <a href="/vaccine">
         <div class="container">
-            <img src="{{ url_for('static', filename='images/icons8-syringe-64.png') }}" style="padding-right:15px">
-            <a href="/vaccine">MGA BAKUNA</a>
+            <img src="{{ url_for('static', filename='images/icons8-syringe-64.png') }}" style="padding-right:15px">MGA BAKUNA
         </div>
+    </a>
 
-        <br><br>
+    <br><br>
 
+    <a href="https://doh.gov.ph/vaccines/tanong-ng-bayan" target="_blank">
         <div class="container">
-            <img src="{{ url_for('static', filename='images/icons8-ask-question-64.png') }}" style="padding-right:15px">
-            <a href="https://doh.gov.ph/vaccines/tanong-ng-bayan" target="_blank">MGA KATANUNGAN</a>
+            <img src="{{ url_for('static', filename='images/icons8-ask-question-64.png') }}" style="padding-right:15px">MGA KATANUNGAN
         </div>
+    </a>
 
+    <a href="https://doh.gov.ph/covid19tracker" target="_blank">
         <div class="container">
-            <img src="{{ url_for('static', filename='images/icons8-target-64.png') }}" style="padding-right:15px">
-            <a href="https://doh.gov.ph/covid19tracker" target="_blank">COVID TRACKER</a>
+            <img src="{{ url_for('static', filename='images/icons8-target-64.png') }}" style="padding-right:15px">COVID TRACKER
         </div>
+    </a>
 
+    <a href="https://doh.gov.ph/bulletin">
         <div class="container">
-            <img src="{{ url_for('static', filename='images/icons8-timetable-64.png') }}" style="padding-right:15px">
-            <a href="https://doh.gov.ph/bulletin">CASE BULLETIN</a>
+            <img src="{{ url_for('static', filename='images/icons8-timetable-64.png') }}" style="padding-right:15px">CASE BULLETIN
         </div>
+    </a>
     </div>
 
     <div class="center3">
