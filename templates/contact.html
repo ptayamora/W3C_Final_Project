@@ -1,32 +1,21 @@
 {% extends "base2.html" %}
 
-{% block title %}Contact{% endblock %}
+{% block title %} Contact {% endblock %}
 
 {% block content %}
-	{% include 'slider.html' %}
-
+<div class="mainContainer">
 	<div class="head">
 	  	<h2><b>About the Group</b></h2>
 	</div>
 
-	<div class="columnsContainer">
-		<div class="leftColumn">
-
-			<div class="article">
-				<p><b>THW3 - C</b></p>
-				<p>
-                    The group consists of <b>MARY GRACE SARA, MAXEEN BERNABE,</b> and <b>PAMELA TAYAMORA</b> as its members. The task was to create a website, the theme/topic of the members' choosing.
-                    <br><br>
-                    All members are currently undergraduates of the School of Library and Information Studies.
-                </p>
-			</div>
-
-		</div>
-
-		<div class="rightColumn">
-			{% include 'rightColumn.html' %}
+	<div class="columnsContainer" style="max-width: 60%;">
+		<div class="article">
+			<h5><b>THW3 - C</b></h5>
+			<p>This project entitled "COVID-19 Vaccination Tracking System" is created in partial fulfillment of the requirements for LIS 161.</p>
+			<p>The group consists of <b>MAXEEN BERNABE, MARY GRACE SARA,</b> and <b>PAMELA TAYAMORA</b> as its members. The task was to create a web application, the theme/topic of the members' choosing.</p>
+			<p>All members are currently undergraduates of the School of Library and Information Studies.</p>
 		</div>
 	</div>
-
+</div>
 
 {% endblock %}

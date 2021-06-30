@@ -2,13 +2,17 @@
 }
 
 body {
-    font-family: 'Varela Round', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
     margin: 0;
+}
+.mainContainer{
+    position: absolute;
+    z-index: 3;
+    top: 4.2em;
 }
 .columnsContainer {
     margin: auto;
     position: relative;
-    margin-top: .75em;
     max-width: 80%;
 }
 .leftColumn {
@@ -16,8 +20,8 @@ margin-bottom: .5em; margin-top: .75em;}
 
 /* RESPONSIVE COLUMN */
 @media screen and (min-width: 52.5em ) {
-    .leftColumn { margin-right: 17.5em;}
-	.rightColumn { position: absolute; top: 0; right: 0; width: 16.75em; }
+    .leftColumn { margin-right: 21.5em;}
+	.rightColumn { position: absolute; top: 0; right: 0; width: 20.75em; }
 }
 
 /* SLIDESHOW */
@@ -32,8 +36,8 @@ margin-bottom: .5em; margin-top: .75em;}
     95% { left: -300%; }
     100% { left: -400%; }
 }
-div#slider { overflow: hidden; }
-div#slider figure img { width: 20%; float: left; border: 1px solid gainsboro;}
+div#slider { overflow: hidden;}
+div#slider figure img { width: 20%; float: left;}
 div#slider figure {
     position: relative;
     width: 500%;
@@ -48,144 +52,13 @@ div#slider figure {
 	font-weight: normal;
 	font-size: 13px;
 }
-.navbar {
-	background: #fff;
-	padding-left: 16px;
-	padding-right: 16px;
-	border-bottom: 1px solid #dfe3e8;
-	border-radius: 0;
-}
-.nav-link img {
-	border-radius: 50%;
-	width: 36px;
-	height: 36px;
-	margin: -8px 0;
-	float: left;
-	margin-right: 10px;
-}
-.navbar .navbar-brand {
-	padding-left: 0;
-	font-size: 20px;
-	padding-right: 50px;
-}
-.navbar .navbar-brand b {
-	color: #33cabb;
-}
-.navbar .form-inline {
-	display: inline-block;
-}
-.navbar a {
-	color: #888;
-	font-size: 15px;
-}
-.navbar .sign-up-btn {
-	min-width: 110px;
-	max-height: 36px;
-}
-.navbar .dropdown-menu {
-	color: #999;
-	font-weight: normal;
-	border-radius: 1px;
-	border-color: #e5e5e5;
-	box-shadow: 0 2px 8px rgba(0,0,0,.05);
-}
-.navbar a, .navbar a:active {
-	color: #888;
-	padding: 8px 20px;
-	background: transparent;
-	line-height: normal;
-}
-.navbar .navbar-form {
-	border: none;
-}
-.navbar .action-form {
-	width: 280px;
-	padding: 20px;
-	left: auto;
-	right: 0;
-	font-size: 14px;
-}
-.navbar .action-form a {
-	color: #33cabb;
-	padding: 0 !important;
-	font-size: 14px;
-}
-.navbar .action-form .hint-text {
-    text-align: center;
-    margin-bottom: 15px;
-    font-size: 13px;
-}
-.navbar .btn-primary, .navbar .btn-primary:active {
-	color: #fff;
-	background: #33cabb !important;
-	border: none;
-}
-.navbar .btn-primary:hover, .navbar .btn-primary:focus {
-	color: #fff;
-	background: #31bfb1 !important;
-}
-.navbar .social-btn .btn, .navbar .social-btn .btn:hover {
-	color: #fff;
-	margin: 0;
-	padding: 0 !important;
-	font-size: 13px;
-	border: none;
-	transition: all 0.4s;
-	text-align: center;
-	line-height: 34px;
-	width: 47%;
-	text-decoration: none;
-}
-.navbar .social-btn .facebook-btn {
-	background: #507cc0;
-}
-.navbar .social-btn .facebook-btn:hover {
-	background: #4676bd;
-}
-.navbar .social-btn .twitter-btn {
-	background: #64ccf1;
-}
-.navbar .social-btn .twitter-btn:hover {
-	background: #4ec7ef;
-}
-.navbar .social-btn .btn i {
-	margin-right: 5px;
-	font-size: 16px;
-	position: relative;
-	top: 2px;
-}
-.navbar .action-buttons .dropdown-toggle::after {
-	display: none;
-}
-.form-check-label input {
-	position: relative;
-	top: 1px;
-}
-@media (min-width: 1200px){
-	.form-inline .input-group {
-		width: 300px;
-		margin-left: 30px;
-	}
-}
-@media (max-width: 768px){
-	.navbar .dropdown-menu.action-form {
-		width: 100%;
-		padding: 10px 15px;
-		background: transparent;
-		border: none;
-	}
-	.navbar .form-inline {
-		display: block;
-	}
-	.navbar .input-group {
-		width: 100%;
-	}
-}
 .article {
     position: relative;
     margin: auto;
     margin-top: .85em;
     max-width: 100%;
+    max-height:100%;
+    display:inline-block;
     padding: 1.25em;
     background-color: white;
     box-sizing: content-box;
@@ -197,6 +70,9 @@ div#slider figure {
     ont-family: verdana;
     text-align: justify;
     line-height: 25px;
+}
+.article h5{
+    text-align: center;
 }
 .text1 {
     color: white;
@@ -210,7 +86,6 @@ div#slider figure {
     min-width: 100%;
     border: 1px solid gainsboro;
 }
-
 .box11{
     min-height: 300px;
 }
@@ -267,7 +142,6 @@ div#slider figure {
 }
 
 a:hover{
-    color: white;
     text-decoration: none;
 }
 
@@ -276,11 +150,4 @@ a:hover{
     justify-content: center;
     align-items: center;
     padding-top: 15px;
-}
-
-.center2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
 }

@@ -1,30 +1,34 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> {% block title %} {% endblock %}</title>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link href="static/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" href="static/main.css">
+    <link rel="stylesheet" type="text/css" href="static/style.css">
     <style>
         .mySlides {display:none;}
     </style>
 </head>
+
 <body>
-    <header>
-        <img src="https://www.portofhalifax.ca/wp-content/uploads/2016/11/Port-Authority-Header-Background.jpg" alt="header" style="max-width: 100%">
-        {% include 'navbar.html' %}
-    </header>
+    {% include 'navbar2.html' %}
 
     {% block content %}
-
     {% endblock %}
 
-    <br><br>
-
+    <script>
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+    }
+    </script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>

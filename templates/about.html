@@ -1,58 +1,45 @@
 {% extends "base2.html" %}
 
-{% block title %}About{% endblock %}
+{% block title %} About {% endblock %}
 
 {% block content %}
-
-{% include 'slider.html' %}
-
+<div class="mainContainer">
 	<div class="head">
 	  	<h2><b>About the Project</b></h2>
 	</div>
 
 	<div class="columnsContainer">
 		<div class="leftColumn">
-
 			<div class="article">
-				<p><b>Problem Statement</b></p>
-				<p>
-					As the numbers of COVID-19 cases continuously rise, the deployment of COVID-19 vaccines to all Filipino people across the nation must be administered effectively to mitigate the further spread of the virus. In this regard, the departments involved in the Philippine National COVID-19 Vaccination Development Plan should have the tools and means to monitor the distribution of the vaccines and ensure that every Filipino citizen will be vaccinated.
-					<br>
-					Currently, the population in the Philippines is approximately 110 million people. Given this staggering number, the Department of Health (DOH) will be overwhelmed with an enormous amount of information and will consequently prolong the distribution process. This hinders the deployment of the vaccine across the country, which results in inefficient vaccine distribution. With this problem at hand, the project proponents propose the utilization of a COVID-19 Vaccination Tracking System. This system allows the DOH and other sectors, which comprise the National Task Force against COVID-19, to track the records of the people who are to be vaccinated. This is to keep track and ensure that every person gets the protection they need from the virus. An automated system that reviews and generates schedules for each person and keeps track of records and data can ensure a smooth and efficient operation to mitigate the transmission of the virus and to eventually restore the normalcy in the lives of the Filipino.
-				</p>
+				<h5><b>Problem/ Opportunity Statement</b></h5>
+				<p>As the numbers of COVID-19 cases continuously rise, the deployment of COVID-19 vaccines to all Filipino people across the nation must be administered effectively to mitigate the further spread of the virus. In this regard, the departments involved in the Philippine National COVID-19 Vaccination Development Plan should have the tools and means to monitor the distribution of the vaccines and ensure that every Filipino citizen will be vaccinated.</p>
+				<p>Currently, the population in the Philippines is approximately 110 million people. Given this staggering number, the Department of Health (DOH) will be overwhelmed with an enormous amount of information and will consequently prolong the distribution process. This hinders the deployment of the vaccine across the country, which results in inefficient vaccine distribution. With this problem at hand, the project proponents propose the utilization of a COVID-19 Vaccination Tracking System. This system allows the DOH and other sectors, which comprise the National Task Force against COVID-19, to track the records of the people who are to be vaccinated. This is to keep track and ensure that every person gets the protection they need from the virus. An automated system that reviews and generates schedules for each person and keeps track of records and data can ensure a smooth and efficient operation to mitigate the transmission of the virus and to eventually restore the normalcy in the lives of the Filipino.</p>
 			</div>
 
 			<div class="article">
-				<p><b>Problem Statement</b></p>
+				<h5><b>Project Objectives</b></h5>
 				<p>
 					The objective of this project is to create a system that will track and manage the records of the people who will be vaccinated. This project also aims to efficiently distribute the COVID-19 vaccines to all Filipinos across the nation and ensure that every citizen will receive the right amount of doses for protection through the guidance of the COVID-19 Vaccination Tracking System.
 				</p>
 			</div>
 
 			<div class="article">
-				<p><b>Problem Statement</b></p>
+				<h5><b>Project Description</b></h5>
 				<p>
 					This project aims to develop an automated COVID-19 Vaccination Tracking System to help the DOH and other sectors to monitor the distribution of the COVID-19 vaccines. This system will collect data from users through a consent form to be filled out prior to the vaccination. The admin will then assess the collected data for the approval process, whether the user is qualified to receive the vaccine or not, and generate a schedule based on the priority standards. The system will provide a vaccination card schedule, which includes details such as the date and location of the vaccination, and the assigned healthcare worker, to the users. Subsequently, the system will generate a card for successfully vaccinated individuals. Throughout the process, the system will store the collected information in the database for the admin to monitor the vaccine distribution process.
 				</p>
 			</div>
 
 			<div class="article">
-				<p><b>Business Benefits</b></p>
-				<p>
-					As asserted in the Philippine National Deployment and Vaccination Plan for COVID-19 Vaccines developed by the Philippine Government, the vaccination plan shall apply the whole-of-society approach where all members of the society and government are encouraged to participate and take action to achieve collective goals and objectives. In this regard, the beneficiaries of this project include all individuals across the Philippines.
-					<br>
-					This project will also specifically benefit the DOH and other sectors which comprise the vaccination plan to achieve seamless operation of distributing and tracking the vaccines. Through this project, the efficient deployment of the vaccines can be achieved, and consequently, further transmission of the virus can be prevented.
-				</p>
+				<h5><b>Business Benefits</b></h5>
+				<p>As asserted in the Philippine National Deployment and Vaccination Plan for COVID-19 Vaccines developed by the Philippine Government, the vaccination plan shall apply the whole-of-society approach where all members of the society and government are encouraged to participate and take action to achieve collective goals and objectives. In this regard, the beneficiaries of this project include all individuals across the Philippines.</p>
+				<p>This project will also specifically benefit the DOH and other sectors which comprise the vaccination plan to achieve seamless operation of distributing and tracking the vaccines. Through this project, the efficient deployment of the vaccines can be achieved, and consequently, further transmission of the virus can be prevented.</p>
 			</div>
-
-
 		</div>
 
 		<div class="rightColumn">
 			{% include 'rightColumn.html' %}
 		</div>
 	</div>
-
-
+</div>
 {% endblock %}
-

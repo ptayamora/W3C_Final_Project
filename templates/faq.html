@@ -1,29 +1,25 @@
 {% extends "base2.html" %}
 
-{% block title %}Frequently Asked Questions{% endblock %}
+{% block title %} FAQ {% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-{% include 'slider.html' %}
+<div class="mainContainer">
+	{% include 'slider.html' %}
 
-	<div class="head">
-	  	<h2><b>Frequently Asked Questions</b></h2>
-	</div>
-
+	<h2 align="center" style="margin-top: 1.5em; margin-bottom: 1.1em;"><b>Frequently Asked Questions</b></h2>
 	<div class="columnsContainer">
 		<div class="leftColumn">
-
 			<div class="article">
 				<p>Ang website ng Department of Health (DOH) ay mayroong malawak na listahan ng mga karaniwang tinatanong ng mga tao ukol sa pagpapa-bakuna, tulad na lamang ng dahilan para magpa-bakuna, kung maaari bang tanggihan ang pagpapa-bakuna, at iba pa. Para malaman ang mga kasagutan sa mga tanong na ito at sa iba pang katanungan, pindutin lamang ang <a href="https://doh.gov.ph/vaccines/Questions-and-Answers" target="_blank"><b>link</b></a> na ito. Mag-scroll pababa sa webpage para makita ang iba't ibang tanong at sagot na inihanda ng DOH.</p>
 				<p>The Department of Health's (DOH) website has an extensive list of frequently asked questions regarding vaccination, such as the reasons to get vaccinated, whether a person can refuse to get vaccinated or not, and more. To know the answers and more frequently asked questions, you may click on this <a href="https://doh.gov.ph/vaccines/Questions-and-Answers" target="_blank"><b>link</b></a>. Kindly scroll down on the webpage to view the questions. </p>
 			</div>
 
 			<div class="article">
-
 				<h3><b>#ChecktheFAQs: A Campaign to Fight Vaccine Misinformation!</b></h3>
 				<br>
 				<div class="w3-content w3-display-container">
-
 					<div class="w3-display-container mySlides">
 					  	<img src="{{ url_for('static', filename='images/faqs/Check the FAQs 1.jpg') }}" style="height:100%; width:100%">
 					  	<div class="w3-display-topleft w3-small w3-container w3-padding-16 w3-black">
@@ -84,9 +80,7 @@
 					<button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
 
 				</div>
-
 				<br>
-
 			</div>
 
 		</div>
@@ -95,7 +89,7 @@
 			{% include 'rightColumn.html' %}
 		</div>
 	</div>
-
+</div>
 
 {% endblock %}
 

@@ -1,18 +1,17 @@
 {% extends "base2.html" %}
 
-{% block title %}Vaccines{% endblock %}
-
 {% block content %}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+<div class="mainContainer">
 	{% include 'slider.html' %}
 
-	<div class="head">
+	<div class="head" style="margin-top: 1.5em; margin-bottom: 1.1em;">
 	  	<h2><b>Mga Bakuna</b></h2>
 	</div>
 
 	<div class="columnsContainer">
 		<div class="leftColumn">
-
 			<div class="article">
 				<p>Current evidence of the COVID-19 vaccines with Emergency Use Authorization (EUA) approvals by Philippine Food and Drug Administration.</p>
 				<p><b>COVID-19 Vaccines Tracker (Selection Process and Approval)</b></p>
@@ -29,83 +28,76 @@
 			</div>
 
 			<div class="article">
-
 				<h3><b>Know Your Vaccines (Vaccine Matrix: Current Evidence)</b></h3>
 				<br>
 				<div class="w3-content w3-display-container">
-
 					<div class="w3-display-container mySlides">
-					  	<img src="{{ url_for('static', filename='images/vaccines/Vaccine Info_ASTRAZENECA.jpg') }}" style="height:100%; width:100%">
+					  	<img src="{{ url_for('static', filename='images/vaccines/Vaccine Info_ASTRAZENECA.jpg') }}" style="max-height:80%; max-width:100%">
 					  	<div class="w3-display-topleft w3-small w3-container w3-padding-16 w3-black">
 							ASTRAZENECA
 					  	</div>
 					</div>
 
 					<div class="w3-display-container mySlides">
-					  	<img src="{{ url_for('static', filename='images/vaccines/Vaccine Info_BHARAT.jpg') }}" style="height:100%; width:100%">
+					  	<img src="{{ url_for('static', filename='images/vaccines/Vaccine Info_BHARAT.jpg') }}" style="max-height:80%; max-width:100%">
 					  	<div class="w3-display-topleft w3-small w3-container w3-padding-16 w3-black">
 							BHARAT
 					  	</div>
 					</div>
 
 					<div class="w3-display-container mySlides">
-					  	<img src="{{ url_for('static', filename='images/vaccines/Vaccine Info_GAMALEYA SPUTNIK V.jpg') }}" style="height:100%; width:100%">
+					  	<img src="{{ url_for('static', filename='images/vaccines/Vaccine Info_GAMALEYA SPUTNIK V.jpg') }}" style="max-height:80%; max-width:100%">
 					  	<div class="w3-display-topleft w3-small w3-container w3-padding-16 w3-black">
 							GAMALEYA SPUTNIK V
 					  	</div>
 					</div>
 
 					<div class="w3-display-container mySlides">
-					  	<img src="{{ url_for('static', filename='images/vaccines/Vaccine Info_JANSSEN.jpg') }}" style="height:100%; width:100%">
+					  	<img src="{{ url_for('static', filename='images/vaccines/Vaccine Info_JANSSEN.jpg') }}" style="max-height:80%; max-width:100%">
 					  	<div class="w3-display-topleft w3-small w3-container w3-padding-16 w3-black">
 							JANSSEN
 					  	</div>
 					</div>
 
 					<div class="w3-display-container mySlides">
-					  	<img src="{{ url_for('static', filename='images/vaccines/Vaccine Info_MODERNA.jpg') }}" style="height:100%; width:100%">
+					  	<img src="{{ url_for('static', filename='images/vaccines/Vaccine Info_MODERNA.jpg') }}" style="max-height:80%; max-width:100%">
 					  	<div class="w3-display-topleft w3-small w3-container w3-padding-16 w3-black">
 							MODERNA
 					  	</div>
 					</div>
 
 					<div class="w3-display-container mySlides">
-					  	<img src="{{ url_for('static', filename='images/vaccines/Vaccine Info_NOVAVAX.jpg') }}" style="height:100%; width:100%">
+					  	<img src="{{ url_for('static', filename='images/vaccines/Vaccine Info_NOVAVAX.jpg') }}" style="max-height:80%; max-width:100%">
 					  	<div class="w3-display-topleft w3-small w3-container w3-padding-16 w3-black">
 							NOVAVAX
 					  	</div>
 					</div>
 
 					<div class="w3-display-container mySlides">
-					  	<img src="{{ url_for('static', filename='images/vaccines/Vaccine Info_PFIZER.jpg') }}" style="height:100%; width:100%">
+					  	<img src="{{ url_for('static', filename='images/vaccines/Vaccine Info_PFIZER.jpg') }}" style="max-height:80%; max-width:100%">
 					  	<div class="w3-display-topleft w3-small w3-container w3-padding-16 w3-black">
 							PFIZER
 					  	</div>
 					</div>
 
 					<div class="w3-display-container mySlides">
-					  	<img src="{{ url_for('static', filename='images/vaccines/Vaccine Info_SINOVAC.jpg') }}" style="height:100%; width:100%">
+					  	<img src="{{ url_for('static', filename='images/vaccines/Vaccine Info_SINOVAC.jpg') }}" style="max-height:80%; max-width:100%">
 					  	<div class="w3-display-topleft w3-small w3-container w3-padding-16 w3-black">
 							SINOVAC
 					  	</div>
 					</div>
 
-					<button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
-					<button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
-
-				</div>
-
-				<br>
-
+					<button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)" style="margin-top:55%">&#10094;</button>
+					<button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)" style="margin-top:55%">&#10095;</button>
+				</div><br>
 			</div>
-
 		</div>
 
 		<div class="rightColumn">
 			{% include 'rightColumn.html' %}
 		</div>
+		<br>
 	</div>
-	<br>
 
 	<div class="head">
 	  	<h2><b>Vaccine Matrix as of 02 June 2021</b></h2>
@@ -114,5 +106,6 @@
 	<div class="center">
 		<img src="{{ url_for('static', filename='images/vaccines/Know Your Vaccines as of 02 June 2021.png') }}" style="height:80%; width:80%; align">
 	</div>
-{% endblock %}
+</div>
 
+{% endblock %}
