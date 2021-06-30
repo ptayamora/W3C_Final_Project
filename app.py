@@ -1,6 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request
 from data import *
-import sqlite3
 import time
 
 app = Flask(__name__)
@@ -30,14 +29,9 @@ def login2():
     return render_template('admin_login.html', error=error)
 
 @app.route('/admin_dashboard')
-def dashboard():
-    sqlconnection = sqlite3.connect(currentlocation + '\Form.db')
-    sqlconnection.row_factory = sqlite3.Row
-    cur = sqlconnection.cursor()
-    cur.execute("SELECT * FROM DATA")
-    data = cur.fetchall()
+def dashboard1():
+    data = read_all()
     return render_template('admin_dashboard.html', data=data)
-    #very bare no design yet
 
 @app.route('/admin_register', methods=['GET'])
 def admin_register1():

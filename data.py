@@ -1,8 +1,5 @@
 import sqlite3
-import os
 from flask import g
-
-currentlocation = os.path.dirname(os.path.abspath(__file__))
 
 DATABASE = './Login.db'
 
@@ -106,6 +103,13 @@ def create_table_admin():
     cur.execute(query)
     conn.commit()
     conn.close()
+
+def read_all():
+    conn, cur = connect_db(db_path)
+    query = 'SELECT * FROM DATA'
+    result = cur.execute(query,).fetchall()
+    conn.close()
+    return result
 
 # Read the user info
 def read_data(username):
