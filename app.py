@@ -54,33 +54,22 @@ def dashboard():
     return render_template('admin_dashboard.html', data=data)
     #very bare no design yet
 
-@app.route('/admin_register', methods = ['GET', 'POST'])
-def admin_register():
-    if request.method == 'POST':
-        rFN = request.form['RFirstname']
-        rLN = request.form['RLastname']
-        rUN = request.form['RUsername']
-        rPW = request.form['RPassword']
-        sqlconnection = sqlite3.Connection(currentlocation + '/Login.db')
-        cursor = sqlconnection.cursor()
-
-        cursor.execute('''
-        CREATE TABLE IF NOT EXISTS Users(
-        ID INTEGER PRIMARY KEY AUTOINCREMENT
-        FirstName VARCHAR(20) NOT NULL,
-        LastName VARCHAR(20) NOT NULL,
-        Username VARCHAR(20) NOT NULL,
-        Password VARCHAR(20) NOT NULL);
-        ''')
-        #makes table named Users if it doesnt exist
-
-        query1 = "INSERT INTO Users VALUES(null,'{f}','{l}','{u}','{p}')".format(f=rFN, l=rLN, u=rUN, p=rPW)
-        cursor.execute(query1)
-        sqlconnection.commit()
-        return redirect('/')
-
+@app.route('/admin_register', methods=['GET'])
+def admin_register1():
     return render_template('admin_register.html')
-    #could not make function verifying if username is already taken
+
+@app.route('/admin_register', methods = ['POST'])
+def admin_register2():
+    admin_data = {'firstName':request.form['RFirstname'],
+                  'lastName':request.form['RLastname'],
+                  'userName':request.form['RUsername'],
+                  'passWord':request.form['RPassword']
+                 }
+
+    create_table_admin()
+    register_admin(admin_data)
+    time.sleep(1)
+    return redirect('/admin_login')
 
 @app.route('/modify/<int:data_id>', methods=['POST'])
 def modify(data_id):
@@ -155,7 +144,7 @@ def process():
                     'username': request.form['VUsername'],
                     'password': request.form['VPassword']}
 
-        create_table()
+        create_table_customer()
         insert_info(vac_data)
         time.sleep(1)
         return redirect('/home')

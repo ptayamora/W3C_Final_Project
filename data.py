@@ -53,7 +53,7 @@ def connect_db(db_path):
     conn.row_factory = sqlite3.Row
     return (conn, conn.cursor())
 
-def create_table():
+def create_table_customer():
     conn, cur = connect_db(db_path)
     query = '''CREATE TABLE IF NOT EXISTS DATA(
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -90,7 +90,20 @@ def create_table():
                 password VARCHAR(20) NOT NULL);
                 '''
     cur.execute(query)
+    conn.commit()
+    conn.close()
 
+def create_table_admin():
+    conn, cur = connect_db(DATABASE)
+    query = '''
+            CREATE TABLE IF NOT EXISTS Users(
+            ID INTEGER PRIMARY KEY AUTOINCREMENT,
+            FirstName VARCHAR(20) NOT NULL,
+            LastName VARCHAR(20) NOT NULL,
+            Username VARCHAR(20) NOT NULL,
+            Password VARCHAR(20) NOT NULL);
+            '''
+    cur.execute(query)
     conn.commit()
     conn.close()
 
@@ -143,7 +156,18 @@ def insert_info(vac_data):
               vac_data['username'],
               vac_data['password'])
     cur.execute(query, values)
+    conn.commit()
+    conn.close()
 
+def register_admin(admin_data):
+    conn, cur = connect_db(DATABASE)
+    query = 'INSERT INTO Users (FirstName, LastName, Username, Password) VALUES(?,?,?,?)'
+    values = (admin_data['firstName'],
+              admin_data['lastName'],
+              admin_data['userName'],
+              admin_data['passWord']
+              )
+    cur.execute(query, values)
     conn.commit()
     conn.close()
 

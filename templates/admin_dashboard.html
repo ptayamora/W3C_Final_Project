@@ -1,9 +1,11 @@
 {% extends 'base2.html' %}
 
+{% block title %}Admin Dashboard{% endblock %}
+
 {% block content %}
 
 <div class="head">
-	  	<h2><b>Welcome to Dashboard, Admin</b></h2>
+	  	<h2><b>Welcome to Dashboard, Admin {{ Users.Username }}</b></h2>
 </div>
 
 <div class="columnsContainer">
