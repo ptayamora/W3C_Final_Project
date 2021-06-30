@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, redirect, url_for, request
 from data import *
 import sqlite3
 import time
@@ -36,7 +36,6 @@ def login2():
 
     if len(rows) == 1:
         return redirect('/admin_dashboard')
-        #render will be changed dashboard still to be edited
     else:
         if check_login(request.form['Username'], request.form['Password']):
             return redirect('/admin_dashboard')
@@ -51,8 +50,8 @@ def dashboard():
     sqlconnection.row_factory = sqlite3.Row
     cur = sqlconnection.cursor()
     cur.execute("SELECT * FROM DATA")
-    rows = cur.fetchall()
-    return render_template('admin_dashboard.html', rows=rows)
+    data = cur.fetchall()
+    return render_template('admin_dashboard.html', data=data)
     #very bare no design yet
 
 @app.route('/admin_register', methods = ['GET', 'POST'])
@@ -83,51 +82,83 @@ def admin_register():
     return render_template('admin_register.html')
     #could not make function verifying if username is already taken
 
-@app.route('/register', methods=['get','post'])
-def register():
-    if request.method == 'POST':
-        vCT = request.form['VCategory']
-        vLN = request.form['VLastname']
-        vFN = request.form['VFirstname']
-        vMN = request.form['VMiddlename']
-        vCN = request.form['VContactnumber']
-        vEM = request.form['VEmail']
-        vBM = request.form['VBirthmonth']
-        vBD = request.form['VBirthdate']
-        vBY = request.form['VBirthyear']
-        vAG = request.form['VAge']
-        vGN = request.form['VGender']
-        vCS = request.form['VCivilstatus']
-        vRG = request.form['VRegion']
-        vPR = request.form['VProvince']
-        vCY = request.form['VCity']
-        vBR = request.form['VBarangay']
-        vAD = request.form['VAddress']
-        vPS = request.form['VPregnancystatus']
-        vCI = request.form['VCovidinteraction']
-        vAL = request.form['VAllergies']
-        vAL2 = request.form['VAllergies2']
-        vCM = request.form['VComorbidity']
-        vSL = request.form['VSelection']
-        vDG = request.form['VDiagnosis']
-        vCL = request.form['VClassification']
-        vCD = request.form['VCoviddate']
-        vCO = request.form['VConsent']
-        vUN = request.form['VUsername']
-        vPW = request.form['VPassword']
+@app.route('/modify/<int:data_id>', methods=['POST'])
+def modify(data_id):
+    data = read_data_by_id(data_id)
+    if request.form['action'] == 'View':
+        return render_template('admin_view.html',data=data)
+    elif request.form['action'] == 'Edit':
+        return render_template('edit_form.html', data=data)
+    elif request.form['action'] == 'Delete':
+        delete_record(data_id)
+        time.sleep(1)
+        return redirect(url_for('dashboard'))
+    else:
+        return redirect('/admin_dashboard')
 
-        sqlconnection = sqlite3.Connection(currentlocation + '\Form.db')
-        cursor = sqlconnection.cursor()
-
-        create_table()
-
-        query1 = "INSERT INTO DATA VALUES(null,'{ct}','{ln}','{fn}','{mn}','{cn}','{em}','{bm}','{bd}','{by}','{ag}','{gn}','{cs}','{rg}','{pr}','{cy}','{br}','{ad}','{ps}','{ci}','{al}','{al2}','{cm}','{sl}','{dg}','{cl}','{cd}','{co}','{un}','{pw}')".format(ct=vCT, ln=vLN, fn=vFN, mn=vMN, cn=vCN, em=vEM, bm=vBM, bd=vBD, by=vBY, ag=vAG, gn=vGN, cs=vCS, rg=vRG, pr=vPR, cy=vCY, br=vBR, ad=vAD, ps=vPS, ci=vCI, al=vAL, al2=vAL2, cm=vCM, sl=vSL, dg=vDG, cl=vCL, cd=vCD, co=vCO, un=vUN, pw=vPW)
-        cursor.execute(query1)
-
-        sqlconnection.commit()
+@app.route('/view_record/<int:data_id>',methods=['POST'])
+def view_record(data_id):
+    if request.form['action'] == 'Back':
+        return redirect('/admin_dashboard')
+    else:
         return redirect('/home')
 
+@app.route('/edit_record/<int:data_id>', methods=['POST'])
+def update2(data_id):
+    customer_vaccine_status =request.form['customer_vaccine_status']
+    customer_vaccine = request.form['customer_vaccine']
+
+    vac_data = {
+        'vaccine_status':customer_vaccine_status,
+        'vaccine':customer_vaccine,
+        'id':data_id
+    }
+
+    update_data(vac_data)
+
+    return redirect('/admin_dashboard')
+    pass
+
+@app.route('/register')
+def register():
     return render_template('register.html')
+
+@app.route('/processing', methods=['POST'])
+def process():
+        vac_data = {'category':request.form['VCategory'],
+                    'l_name':request.form['VLastname'],
+                    'f_name':request.form['VFirstname'],
+                    'm_name': request.form['VMiddlename'],
+                    'con_num': request.form['VContactnumber'],
+                    'email_add': request.form['VEmail'],
+                    'birth_month': request.form['VBirthmonth'],
+                    'birth_date': request.form['VBirthdate'],
+                    'birth_year': request.form['VBirthyear'],
+                    'age': request.form['VAge'],
+                    'gender': request.form['VGender'],
+                    'civil_stat': request.form['VCivilstatus'],
+                    'add_reg': request.form['VRegion'],
+                    'add_prov': request.form['VProvince'],
+                    'add_city': request.form['VCity'],
+                    'add_bar': request.form['VBarangay'],
+                    'address': request.form['VAddress'],
+                    'preg_stat': request.form['VPregnancystatus'],
+                    'covid_interaction': request.form['VCovidinteraction'],
+                    'allergy': request.form['VAllergies'],
+                    'allergy_list': request.form['VAllergies2'],
+                    'comorbidity': request.form['VComorbidity'],
+                    'selection': request.form['VSelection'],
+                    'diagnosis': request.form['VDiagnosis'],
+                    'classification': request.form['VClassification'],
+                    'covid_date': request.form['VCoviddate'],
+                    'consent': request.form['VConsent'],
+                    'username': request.form['VUsername'],
+                    'password': request.form['VPassword']}
+
+        create_table()
+        insert_info(vac_data)
+        time.sleep(1)
+        return redirect('/home')
 
 @app.route('/customer', methods = ['GET'])
 def login3():
@@ -149,28 +180,22 @@ def login4():
 
     if len(rows) == 1:
         DATA = read_data(UN)
-        return render_template('customer_dashboard.html', data=DATA)
-
+        return render_template('customer_view.html', data=DATA)
     else:
         if check_login2(request.form['Username'], request.form['Password']):
-            return redirect('/customer_dashboard/<Username>')
+            DATA = read_data(UN)
+            return render_template('customer_view.html', data=DATA)
         else:
             error = 'Username and password not recognized'
             time.sleep(1)
             return render_template('customer_login.html', error=error)
 
-@app.route('/customer_dashboard/<Username>')
-def dashboard1():
-    return render_template('customer_dashboard.html')
-
-@app.route('/edit_registration_form', methods='GET')
-def edit_registration_form1():
-    read_data()
-    return render_template()
-
-@app.route('/edit_registration_form', methods='POST')
-def edit_registration_form2():
-    update_record()
+@app.route('/customer', methods=['POST'])
+def customer_back():
+    if request.form['action'] == 'Logout':
+        return redirect('/customer_login')
+    else:
+        return redirect('/home')
 
 @app.route('/about')
 def about():
@@ -191,6 +216,3 @@ def vaccine():
 if __name__ == '__main__':
     app.run(debug=True)
 
-#notes
-#about contact faq and vaccine navbar could not make function where if user logged in correctly
-#login and signup buttons will be replaced by logout or name

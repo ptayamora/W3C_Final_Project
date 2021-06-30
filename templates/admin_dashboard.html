@@ -1,28 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard</title>
-</head>
-<body>
-    <h1>Database</h1>
+{% extends 'base2.html' %}
 
-    <table border="5">
+{% block content %}
+
+<div class="head">
+	  	<h2><b>Welcome to Dashboard, Admin</b></h2>
+</div>
+
+<div class="columnsContainer">
+  <div class="leftColumn" style="width:900px; max-width:100%">
+    <div class="article">
+      <!--Table-->
+      <table class="table table-hover table-fixed" style="text-align:center; width:895px; max-width:100%">
+
+        <!--Table head-->
         <thead>
-            <td>First Name</td>
-            <td>Last Name</td>
-            <td>Username</td>
+          <tr>
+            <th>ID</th>
+            <th>Category</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Action</th>
 
+          </tr>
         </thead>
+        <!--Table head-->
 
-        {% for row in rows %}
-            <tr>
-                <td>{{ row["Firstname"] }}</td>
-                <td>{{ row["Lastname"] }}</td>
-                <td>{{ row["Username"] }}</td>
-
+        {% for row in data %}
+          <!--Table body-->
+          <tbody>
+            <tr class="table-info">
+              <th scope="row">{{ row["id"] }}</th>
+              <td>{{ row["category"] }}</td>
+              <td>{{ row["last_name"] }}</td>
+              <td>{{ row["first_name"] }}</td>
+              <td>{{ row["mid_name"] }}</td>
+              <td>
+                <form action="{{ url_for('modify', data_id=row['id']) }}" method="post">
+                  <input class="btn btn-secondary" type="submit" value="View" name="action">
+                  <input class="btn btn-secondary" type="submit" value="Edit" name="action">
+                  <input class="btn btn-danger" type="submit" value="Delete" name="action">
+                </form>
+              </td>
             </tr>
+          </tbody>
+          <!--Table body-->
         {% endfor %}
-    </table>
-</body>
-</html>
+
+      </table>
+      <!--Table-->
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,6 +1,6 @@
 import sqlite3
 import os
-from flask import g, request
+from flask import g
 
 currentlocation = os.path.dirname(os.path.abspath(__file__))
 
@@ -69,9 +69,9 @@ def create_table():
                 age INTEGER NOT NULL,
                 gender VARCHAR(20) NOT NULL,
                 civil_status VARCHAR(20) NOT NULL,
-                region VARCHAR(20) NOT NULL,
-                province VARCHAR(20) NOT NULL,
-                city VARCHAR(20) NOT NULL,
+                region VARCHAR(50) NOT NULL,
+                province VARCHAR(50) NOT NULL,
+                city VARCHAR(50) NOT NULL,
                 barangay TEXT NOT NULL,
                 address TEXT NOT NULL,
                 pregnancy_status TEXT NOT NULL,
@@ -84,6 +84,8 @@ def create_table():
                 classification VARCHAR(100),
                 covid_date TEXT NOT NULL,
                 consent TEXT NOT NULL,
+                vaccine_status VARCHAR(50),
+                vaccine VARCHAR(50),
                 username VARCHAR(20) NOT NULL,
                 password VARCHAR(20) NOT NULL);
                 '''
@@ -100,15 +102,21 @@ def read_data(username):
     conn.close()
     return result
 
+def read_data_by_id(data_id):
+    conn, cur = connect_db(db_path)
+    query = 'SELECT * FROM DATA WHERE id=?'
+    result = cur.execute(query, (data_id,)).fetchone()
+    conn.close()
+    return result
+
 # Insert info to DB
 def insert_info(vac_data):
     conn, cur = connect_db(db_path)
-    query = 'INSERT INTO data (category, last_name, first_name, mid_name, suffix, contact_num, email, birthmonth, birthdate, birthyear, age, gender, civil_status, region, province, city, barangay, complete_address, covid_interaction, pregnant_status, allegies, comorbidity, selection, diagnosis, covid_classification, covid_date, consent) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)'
+    query = 'INSERT INTO data (category, last_name, first_name, mid_name, contact_num, email, birthmonth, birthdate, birthyear, age, gender, civil_status, region, province, city, barangay, address, pregnancy_status, covid_interaction, allergy, allergy_list, comorbidity, selection, diagnosis, classification, covid_date, consent, username, password) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)'
     values = (vac_data['category'],
               vac_data['l_name'],
               vac_data['f_name'],
               vac_data['m_name'],
-              vac_data['s_name'],
               vac_data['con_num'],
               vac_data['email_add'],
               vac_data['birth_month'],
@@ -122,56 +130,36 @@ def insert_info(vac_data):
               vac_data['add_city'],
               vac_data['add_bar'],
               vac_data['address'],
-              vac_data['Covid Interaction'],
               vac_data['preg_stat'],
-              vac_data['Allergies'],
-              vac_data['Comorbidity'],
+              vac_data['covid_interaction'],
+              vac_data['allergy'],
+              vac_data['allergy_list'],
+              vac_data['comorbidity'],
               vac_data['selection'],
-              vac_data['Diagnosis'],
+              vac_data['diagnosis'],
               vac_data['classification'],
               vac_data['covid_date'],
-              vac_data['Consent'])
+              vac_data['consent'],
+              vac_data['username'],
+              vac_data['password'])
     cur.execute(query, values)
 
     conn.commit()
     conn.close()
 
-def update_record(username):
-    if request.method == 'POST':
-        eCT = request.form['ECategory']
-        eLN = request.form['ELastname']
-        eFN = request.form['EFirstname']
-        eMN = request.form['EMiddlename']
-        eCN = request.form['EContactnumber']
-        eEM = request.form['EEmail']
-        eBM = request.form['EBirthmonth']
-        eBD = request.form['EBirthdate']
-        eBY = request.form['EBirthyear']
-        eAG = request.form['EAge']
-        eGN = request.form['EGender']
-        eCS = request.form['ECivilstatus']
-        eRG = request.form['ERegion']
-        ePR = request.form['EProvince']
-        eCY = request.form['ECity']
-        eBR = request.form['EBarangay']
-        eAD = request.form['EAddress']
-        ePS = request.form['EPregnancystatus']
-        eCI = request.form['ECovidinteraction']
-        eAL = request.form['EAllergies']
-        eAL2 = request.form['EAllergies2']
-        eCM = request.form['EComorbidity']
-        eSL = request.form['ESelection']
-        eDG = request.form['EDiagnosis']
-        eCL = request.form['EClassification']
-        eCD = request.form['ECoviddate']
-        eCO = request.form['EConsent']
-        eUN = request.form['EUsername']
-        ePW = request.form['EPassword']
-
+def update_data(vac_data):
     conn, cur = connect_db(db_path)
-    query = "UPDATE DATA SET VALUES(null,'{ct}','{ln}','{fn}','{mn}','{cn}','{em}','{bm}','{bd}','{by}','{ag}','{gn}','{cs}','{rg}','{pr}','{cy}','{br}','{ad}','{ps}','{ci}','{al}','{al2}','{cm}','{sl}','{dg}','{cl}','{cd}','{co}',null,null)".format(
-        ct=eCT, ln=eLN, fn=eFN, mn=eMN, cn=eCN, em=eEM, bm=eBM, bd=eBD, by=eBY, ag=eAG, gn=eGN, cs=eCS, rg=eRG, pr=ePR,
-        cy=eCY, br=eBR, ad=eAD, ps=ePS, ci=eCI, al=eAL, al2=eAL2, cm=eCM, sl=eSL, dg=eDG, cl=eCL, cd=eCD, co=eCO)
-    cur.execute(query, (username),)
+    query = 'UPDATE DATA SET vaccine_status=?,vaccine=? WHERE id=?'
+    values = (vac_data['vaccine_status'],
+              vac_data['vaccine'],
+              vac_data['id'])
+    cur.execute(query, values)
+    conn.commit()
+    conn.close()
+
+def delete_record(data_id):
+    conn, cur = connect_db(db_path)
+    query = 'DELETE FROM DATA WHERE id=?'
+    cur.execute(query, (data_id,))
     conn.commit()
     conn.close()

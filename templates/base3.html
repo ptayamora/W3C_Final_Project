@@ -1,44 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>COVID-19 Vaccination Tracker</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>s
-    <link href="static/form.css" rel="stylesheet">
-    <link href="static/codingnepal.css" rel="stylesheet">
-    <link href="static/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+    *{
+      margin: 0;
+      padding: 0;
+      outline: none;
+      font-family: 'Poppins', sans-serif;
+    }
+    body{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: url("bg.png"), -webkit-linear-gradient(bottom, #dbd65c, #5614b0);
+    }
+    ::selection{
+      color: #fff;
+      background: #5614b0;
+    }
+
+    .container{
+      position: relative;
+      max-width: 60%;
+      max-height: 60%;
+      background: #fff;
+      text-align: center;
+      border-radius: 5px;
+      padding: 50px 35px 10px 35px;
+      border: 1px solid gray;
+    }
+    .container header{
+      font-size: 35px;
+      font-weight: 600;
+      margin: 0 0 30px 0;
+    }
+    .container .form-outer{
+      width: 100%;
+      overflow: hidden;
+    }
+    .container .form-outer form{
+      display: flex;
+      width: 400%;
+    }
+    .form-outer form .page{
+      width: 25%;
+      margin-top: 3em;
+      transition: margin-left 0.3s ease-in-out;
+    }
+    .form-outer form .page .title{
+      text-align: left;
+      font-size: 25px;
+      font-weight: 500;
+    }
+    .form-outer form .page .field, .field1{
+      height: 45px;
+      display: flex;
+      flex-flow: row nowrap;
+      position: relative;
+
+    }
+
+    .form-outer form .page .field{
+      width: 100%;
+      margin: 10% 0 5% 0;
+    }
+    .form-outer form .page .field1{
+      width: 40%;
+      margin: 10% 0 5% 0;
+    }
+
+    .form-outer form .page .field2{
+      display: flex;
+      flex-flow: row wrap;
+    }
+
+    form .page .field p{
+      position: relative;
+      margin: .5em 1.25em 1em 1em;
+      font-weight: 500;
+    }
+
+    form .page .field1 p{
+      position: relative;
+      margin: .5em .5em .5em .5em;
+      font-weight: 500;
+    }
+
+    form .page .field .label{
+      position: absolute;
+      top: -30px;
+      font-weight: 500;
+      max-width: 90%;
+    }
+
+    form .page .field1 .label{
+      position: absolute;
+      top: -30px;
+      font-weight: 500;
+      max-width: 90%;
+    }
+
+    form .page .field input, output{
+      height: 100%;
+      width: 100%;
+      border: 1px solid lightgrey;
+      border-radius: 5px;
+      padding-left: 15px;
+      font-size: 18px;
+    }
+
+    form .page .field1 input, output{
+      height: 100%;
+      width: 50%;
+      border: 1px solid lightgrey;
+      border-radius: 5px;
+      padding-left: 15px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .radio{
+      height: 100%;
+      width: 100%;
+      font-size: 18px;
+
+    }
+
+    form .page .field select{
+      width: 100%;
+      padding-left: 10px;
+      font-size: 18px;
+      border: 1px solid lightgrey;
+      border-radius: 5px;
+    }
+
+    form .page .field1 select{
+      width: 100%;
+      padding-left: 10px;
+      font-size: 18px;
+      border: 1px solid lightgrey;
+      border-radius: 5px;
+    }
+
+    form .page .field button{
+      width: 100%;
+      height: calc(100% + 5px);
+      border: none;
+      background: #dbd65c;
+      margin-top: -20px;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: 0.5s ease;
+    }
+
+    form .page .field1 button{
+      width: 100%;
+      height: calc(100% + 5px);
+      border: none;
+      background: #dbd65c;
+      margin-top: -20px;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: 0.5s ease;
+    }
+
+    form .page .field button:hover{
+      background: #000;
+    }
+
+    form .page .field1 button:hover{
+      background: #000;
+    }
+    form .page .btns a{
+      text-decoration: none;
+      color: white;
+    }
+    form .page .btns button{
+      margin-top: -20px!important;
+    }
+    form .page .btns button.prev{
+      margin-right: 3px;
+      font-size: 17px;
+    }
+    form .page .btns button.next{
+      margin-left: 3px;
+    }
+    .container .progress-bar{
+      display: flex;
+      margin: 40px 0;
+      user-select: none;
+    }
+    .container .progress-bar .step{
+      text-align: center;
+      width: 100%;
+      position: relative;
+    }
+    .container .progress-bar .step p{
+      font-weight: 500;
+      font-size: 18px;
+      color: #000;
+      margin-bottom: 8px;
+    }
+    .progress-bar .step .bullet{
+      height: 25px;
+      width: 25px;
+      border: 2px solid #000;
+      display: inline-block;
+      border-radius: 50%;
+      position: relative;
+      transition: 0.2s;
+      font-weight: 500;
+      font-size: 17px;
+      line-height: 25px;
+    }
+    .progress-bar .step .bullet.active{
+      border-color: #dbd65c;
+      background: #dbd65c;
+    }
+    .progress-bar .step .bullet span{
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .progress-bar .step .bullet.active span{
+      display: none;
+    }
+    .progress-bar .step .bullet:before,
+    .progress-bar .step .bullet:after{
+      position: relative;
+      content: '';
+      bottom: 11px;
+      right: -51px;
+      height: 3px;
+      max-width: 50%;
+      background: #262626;
+    }
+    .progress-bar .step .bullet.active:after{
+      background: #dbd65c;
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: animate 0.3s linear forwards;
+    }
+    @keyframes animate {
+      100%{
+        transform: scaleX(1);
+      }
+    }
+    .progress-bar .step:last-child .bullet:before,
+    .progress-bar .step:last-child .bullet:after{
+      display: none;
+    }
+    .progress-bar .step p.active{
+      color: #dbd65c;
+      transition: 0.2s linear;
+    }
+    .progress-bar .step .check{
+      position: absolute;
+      left: 50%;
+      top: 70%;
+      font-size: 15px;
+      transform: translate(-50%, -50%);
+      display: none;
+    }
+    .progress-bar .step .check.active{
+      display: block;
+      color: #fff;
+    }
+    .columnsContainer {
+    margin: auto;
+    position: relative;
+    margin-top: .75em;
+    max-width: 80%;
+    }
+    .leftColumn {
+    margin-bottom: .5em;
+    margin-top: .75em;
+    width:900px;
+    }
+
+    .article {
+    position: relative;
+    margin: auto;
+    margin-top: .85em;
+    max-width: 100%;
+    padding: 1.25em;
+    background-color: white;
+    box-sizing: content-box;
+    box-sizing: border-box;
+    border: 1px solid gainsboro;
+    }
+    </style>
 </head>
 <body>
-    <header>
-        <img src="https://www.portofhalifax.ca/wp-content/uploads/2016/11/Port-Authority-Header-Background.jpg" alt="header" style="max-width: 100%">
-        {% include 'navbar.html' %}
-    </header>
 
     {% block content %}
 
     {% endblock %}
 
-    <script src="static/script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script>
-        // Prevent dropdown menu from closing when click inside the form
-        $(document).on("click", ".action-buttons .dropdown-menu", function(e){
-            e.stopPropagation();
-        });
-    </script>
-    <script src="script.js"></script>
+      const submitBtn = document.querySelector(".submit");
 
+      submitBtn.addEventListener("click", function(){
+        bullet[current - 1].classList.add("active");
+        progressCheck[current - 1].classList.add("active");
+        progressText[current - 1].classList.add("active");
+        current += 1;
+        setTimeout(function(){
+          alert("Your Form Successfully Signed up");
+          location.reload();
+        },800);
+      });
+    </script>
 </body>
 </html>
