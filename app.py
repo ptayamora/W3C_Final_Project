@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, request
 from data import *
 import time
 
@@ -59,8 +59,8 @@ def modify(data_id):
         return render_template('edit_form.html', data=data)
     elif request.form['action'] == 'Delete':
         delete_record(data_id)
-        time.sleep(1)
-        return redirect(url_for('dashboard'))
+        time.sleep(0.5)
+        return dashboard1()
     else:
         return redirect('/admin_dashboard')
 
