@@ -1,4 +1,4 @@
-# weblis161_proj
+# W3C_Final_Project
 Covid-19 Vaccine Tracker
 
 **DOCUMENTATION:**
