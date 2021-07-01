@@ -62,7 +62,7 @@ def modify(data_id):
         time.sleep(0.5)
         return dashboard1()
     else:
-        return redirect('/admin_dashboard')
+        return dashboard1()
 
 @app.route('/view_record/<int:data_id>',methods=['POST'])
 def view_record(data_id):
