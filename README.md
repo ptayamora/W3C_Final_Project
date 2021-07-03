@@ -20,15 +20,3 @@ Website Functions:
     - Delete: Admins are also able to delete a person's record, so that they will not have any copy of anyone's personal information. This action is irreversible, however. 
 
 *It must be noted that the log-in function for both sides is not as secure as session was not used. Both must still log-in for access. 
-
-Record CREATION:
-  - through the registration
-
-Record UPDATE/EDIT:
-  - through the log-in page designated for the admin; if no account has been made, a link is provided and will redirect to a registration page for the admin
-
-Record DELETION:
-  - through the admin, must log-in
-
-Record VIEWING:
-  - can be done through the link provided to the customer and admin
